@@ -4,7 +4,7 @@ import uvicorn
 import asyncio
 
 from settings import load_configuration
-from views import bff
+from views import support_view
 
 app = FastAPI()
 
@@ -21,7 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(bff.router)
+app.include_router(support_view.router)
 
 if __name__ == "__main__":
     server_config = load_configuration()
