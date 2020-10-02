@@ -8,8 +8,8 @@ router = APIRouter()
 
 
 class Support(BaseModel):
-    title: str
-    message_body: str
+    priority: str
+    problem: str
     description: str
     # description: Optional[str] = None
 
