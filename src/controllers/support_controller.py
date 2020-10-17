@@ -1,7 +1,7 @@
 import aiohttp
 import os
 
-urlEnv = os.getenv("URLENVSUPPORT")
+urlEnv = str(os.getenv("URLENVSUPPORT"))
 
 
 async def fetch(session, url, data=None):
@@ -17,6 +17,7 @@ async def fetch(session, url, data=None):
 
 
 async def post_support(support):
+    print(urlEnv)
     response = dict()
     status = 404
 

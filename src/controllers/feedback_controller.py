@@ -1,7 +1,7 @@
 import aiohttp
 import os
 
-urlEnv = os.getenv("URLENVFEEDBACK")
+urlEnv = str(os.getenv("URLENVFEEDBACK"))
 
 
 async def fetch(session, url, data=None):
