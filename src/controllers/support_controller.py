@@ -21,7 +21,7 @@ async def post_support(support):
     async with aiohttp.ClientSession() as session:
         response, status = await fetch(
             session,
-            'https://smartvit-support-dev.herokuapp.com/support/',
+            'https://smartvit-support-dev.herokuapp.com/support',
             support
         )
 
