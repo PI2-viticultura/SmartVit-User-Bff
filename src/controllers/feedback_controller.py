@@ -1,6 +1,7 @@
 import aiohttp
-import requests
-import json
+import os
+
+urlEnv = os.getenv("URLENVFEEDBACK")
 
 
 async def fetch(session, url, data=None):
@@ -22,7 +23,7 @@ async def post_feedback(feedback):
     async with aiohttp.ClientSession() as session:
         response, status = await fetch(
             session,
-            'http://localhost:8000/feedback',
+            urlEnv,
             feedback
         )
 

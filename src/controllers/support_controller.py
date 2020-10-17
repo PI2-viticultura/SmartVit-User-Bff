@@ -1,6 +1,7 @@
 import aiohttp
-import requests
-import json
+import os
+
+urlEnv = os.getenv("URLENVSUPPORT")
 
 
 async def fetch(session, url, data=None):
@@ -22,7 +23,7 @@ async def post_support(support):
     async with aiohttp.ClientSession() as session:
         response, status = await fetch(
             session,
-            'http://localhost:8000/support',
+            urlEnv,
             support
         )
 
