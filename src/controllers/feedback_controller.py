@@ -20,7 +20,7 @@ async def post_feedback(feedback):
     async with aiohttp.ClientSession() as session:
         response, status = await fetch(
             session,
-            'https://smartvit-feedback-dev.herokuapp.com/',
+            'https://smartvit-feedback-dev.herokuapp.com/feedback',
             feedback
         )
 
