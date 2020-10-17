@@ -1,7 +1,4 @@
 import aiohttp
-import os
-
-urlEnv = str(os.getenv("URLENVFEEDBACK"))
 
 
 async def fetch(session, url, data=None):
@@ -17,15 +14,14 @@ async def fetch(session, url, data=None):
 
 
 async def post_feedback(feedback):
-    print(urlEnv)
     response = dict()
     status = 404
 
     async with aiohttp.ClientSession() as session:
         response, status = await fetch(
             session,
-            urlEnv,
+            'https://smartvit-feedback-dev.herokuapp.com',
             feedback
         )
 
-    return response, status
+    return status
