@@ -7,9 +7,12 @@ router = APIRouter()
 
 
 class Pest(BaseModel):
-    priority: str
-    problem: str
-    description: str
+    idVineyard: str
+    type: str
+    startTime: str
+    endTime: str
+    action: str
+    observation: str
     # description: Optional[str] = None
 
 

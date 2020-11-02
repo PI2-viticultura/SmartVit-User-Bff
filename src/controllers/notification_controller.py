@@ -2,7 +2,10 @@ import aiohttp
 import json
 import os
 
-urlEnv = os.getenv('URLENVNOTIFICATION', 'https://smartvit-notification-dev.herokuapp.com/notification')
+urlEnv = os.getenv(
+    'URLENVNOTIFICATION',
+    'https://smartvit-notification-dev.herokuapp.com/notification'
+)
 
 
 async def retrieve(session, url, data=None):

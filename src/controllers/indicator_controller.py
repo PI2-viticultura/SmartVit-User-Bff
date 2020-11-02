@@ -2,7 +2,10 @@ import aiohttp
 import json
 import os
 
-urlEnv = os.getenv('URLENVINDICATOR', 'http://localhost:8000/indicators')
+urlEnv = os.getenv(
+    'URLENVINDICATOR',
+    'https://smartvit-indicator-dev.herokuapp.com/indicators'
+)
 
 
 async def retrieve(session, url, data=None):
