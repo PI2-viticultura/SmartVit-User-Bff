@@ -6,12 +6,7 @@ from pydantic import BaseModel
 router = APIRouter()
 
 
-class Indicator(BaseModel):
-    title: str
-    message_body: str
-
-
-@router.post('/indicator/')
-async def indicator(response: Response, indicator: Indicator):
-    result, status = await indicator_controller.post_indicator(indicator.dict())
+@router.get('/indicators/{winery_id}')
+async def indicator(response: Response, winery_id: str):
+    result, status = await indicator_controller.retrieve_indicator(winery_id)
     return create_response(result, status, response)
