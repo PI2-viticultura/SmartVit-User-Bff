@@ -1,30 +1,29 @@
 import aiohttp
+import json
 import os
 
-urlEnv = os.getenv('URLENVNOTIFICATION')
+urlEnv = os.getenv('URLENVNOTIFICATION', 'https://smartvit-notification-dev.herokuapp.com/notification')
 
 
-async def fetch(session, url, data=None):
+async def retrieve(session, url, data=None):
     header = {
         'Accept': 'application/json'
     }
-    async with session.post(
+    async with session.get(
         url,
-        json=data,
         headers=header
     ) as response:
-        return await response.json(), response.status
+        return await response.text(), response.status
 
 
-async def get_notification(notification):
+async def get_notification(user_id):
     response = dict()
     status = 404
 
     async with aiohttp.ClientSession() as session:
-        response, status = await fetch(
+        response, status = await retrieve(
             session,
-            urlEnv,
-            notification
+            urlEnv + '/' + user_id
         )
 
-    return response, status
+    return json.loads(response), status

@@ -1,17 +1,11 @@
 from fastapi import APIRouter, Response
 from controllers import notification_controller
 from utils.formatters import create_response
-from pydantic import BaseModel
 
 router = APIRouter()
 
 
-class Notification(BaseModel):
-    title: str
-    message_body: str
-
-
-@router.get('/notification/')
-async def notification(response: Response, notification: Notification):
-    result, status = await notification_controller.post_notification(notification.dict())
+@router.get('/notification/{user_id}')
+async def notification(response: Response, user_id: str):
+    result, status = await notification_controller.get_notification(user_id)
     return create_response(result, status, response)

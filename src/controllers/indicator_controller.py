@@ -23,9 +23,10 @@ async def retrieve_indicator(winery_id):
     async with aiohttp.ClientSession() as session:
         response, status = await retrieve(
             session,
-            urlEnv + '/' + winery_id, 
+            urlEnv + '/' + winery_id,
         )
     try:
         return json.loads(response), status
-    except:
+    except Exception as e:
+        print(e)
         return response, status
