@@ -1,7 +1,10 @@
 import aiohttp
 import os
 
-urlEnv = os.getenv('URLENVSUPPORT')
+urlEnv = os.getenv(
+    'URLENVSUPPORT',
+    'https://smartvit-support-dev.herokuapp.com/support'
+)
 
 
 async def fetch(session, url, data=None):
