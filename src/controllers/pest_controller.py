@@ -1,9 +1,10 @@
 import aiohttp
+import json
 import os
 
 urlEnv = os.getenv(
-    'URLENVSUPPORT',
-    'https://smartvit-support-dev.herokuapp.com/support'
+    'URLENVPEST',
+    'https://smartvit-pest-dev.herokuapp.com/pest'
 )
 
 
@@ -16,10 +17,10 @@ async def fetch(session, url, data=None):
         json=data,
         headers=header
     ) as response:
-        return await response.json(), response.status
+        return await response.text(), response.status
 
 
-async def post_support(support):
+async def post_pest(pest):
     response = dict()
     status = 404
 
@@ -27,7 +28,7 @@ async def post_support(support):
         response, status = await fetch(
             session,
             urlEnv,
-            support
+            pest
         )
 
-    return response, status
+    return json.loads(response), status
