@@ -1,5 +1,11 @@
 import aiohttp
+import json
 import os
+
+urlEnv = os.getenv(
+    'URLENVLOGIN',
+    'https://smartvit-user-dev.herokuapp.com/login'
+)
 
 async def fetch(session, url, data=None):
     header = {
@@ -12,7 +18,7 @@ async def fetch(session, url, data=None):
     ) as response:
         return await response.json(), response.status
 
-async def post_login(login):
+async def post_login(user):
     response = dict()
     status = 404
 
@@ -20,7 +26,7 @@ async def post_login(login):
         response, status = await fetch(
             session,
             urlEnv,
-            support
+            user
         )
 
     return response, status

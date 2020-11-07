@@ -8,3 +8,6 @@ gunicorn
 python-jose[cryptography]
 cryptography
 passlib[bcrypt]
+jose
+pydantic
+fastapi-jwt-auth[asymmetric]
