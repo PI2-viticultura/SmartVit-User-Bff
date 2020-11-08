@@ -8,6 +8,7 @@ router = APIRouter()
 class User(BaseModel):
     email: str
     password: str
+    role: str
 
 
 @router.post('/login/')
