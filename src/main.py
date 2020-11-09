@@ -9,7 +9,8 @@ from views import (
     feedback_view,
     indicator_view,
     notification_view,
-    pest_view
+    pest_view,
+    login_view
 )
 
 app = FastAPI()
@@ -32,6 +33,8 @@ app.include_router(feedback_view.router)
 app.include_router(indicator_view.router)
 app.include_router(notification_view.router)
 app.include_router(pest_view.router)
+app.include_router(notification_view.router)
+app.include_router(login_view.router)
 
 if __name__ == "__main__":
     server_config = load_configuration()

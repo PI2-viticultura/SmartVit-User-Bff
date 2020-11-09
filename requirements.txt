@@ -5,3 +5,9 @@ aiohttp==3.6.2
 requests==2.24.0
 flake8
 gunicorn
+python-jose[cryptography]
+cryptography
+passlib[bcrypt]
+jose
+pydantic
+fastapi-jwt-auth[asymmetric]
