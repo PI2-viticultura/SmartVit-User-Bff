@@ -24,6 +24,7 @@ async def post_login(user):
     response = dict()
     status = 404
 
+    print(user)
     async with aiohttp.ClientSession() as session:
         response, status = await fetch(
             session,
@@ -31,4 +32,5 @@ async def post_login(user):
             user
         )
 
+    print(response)
     return response, status
